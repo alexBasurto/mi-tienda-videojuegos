@@ -4522,19 +4522,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alexb\\.nuget\\packages\\": {}
+    "C:\\Users\\Talio Tecnico\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\www\\CURSO_DOTNET\\10 PROYECTO FINAL\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\WebApiTiendaVideojuegos.csproj",
+      "projectUniqueName": "C:\\Users\\Talio Tecnico\\Desktop\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\WebApiTiendaVideojuegos.csproj",
       "projectName": "WebApiTiendaVideojuegos",
-      "projectPath": "C:\\www\\CURSO_DOTNET\\10 PROYECTO FINAL\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\WebApiTiendaVideojuegos.csproj",
-      "packagesPath": "C:\\Users\\alexb\\.nuget\\packages\\",
-      "outputPath": "C:\\www\\CURSO_DOTNET\\10 PROYECTO FINAL\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\obj\\",
+      "projectPath": "C:\\Users\\Talio Tecnico\\Desktop\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\WebApiTiendaVideojuegos.csproj",
+      "packagesPath": "C:\\Users\\Talio Tecnico\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Talio Tecnico\\Desktop\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\alexb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Talio Tecnico\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4598,7 +4603,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -21,6 +21,7 @@ namespace WebApiTiendaVideojuegos.Controllers
         {
             var Categorias = await context.Categorias.ToArrayAsync();
             return Ok(Categorias);
+            // primer punto de acceso get todo
         }
     }
 }
