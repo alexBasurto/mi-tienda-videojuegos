@@ -10,6 +10,7 @@ namespace WebApiTiendaVideojuegos.Controllers
     public class DesarrolladorasController : ControllerBase
     {
         private readonly MiTiendaVideojuegosContext context;
+        private string íd;
 
         public DesarrolladorasController(MiTiendaVideojuegosContext context)
         {
@@ -26,15 +27,39 @@ namespace WebApiTiendaVideojuegos.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("obtenerDesarrolladoras")]
         public async Task<ActionResult> MisDesarroladoras()
         {
             var Desarrolladoras = await context.Desarrolladoras.ToListAsync();
             return Ok(Desarrolladoras);
-            //     TENGO QUE VER ESTE COMENTARIO
-            // He añadido otra línea 
-
+         
         }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> DeleteDesarrolladora(int id)
+        {
+            var hayjuegos = await context.Juegos.AnyAsync(x => x.IdDesarrolladora == id);
+           
+            
+            if (hayjuegos)
+            {
+                return BadRequest("N se puede borrar "+" tiene juegos relacionados");
+            }
+            var desarrolladora = await context.Desarrolladoras.FindAsync(id);
+
+            if (desarrolladora is null)
+            {
+                return NotFound("No existe esa Desarrolladora");
+            }
+
+            context.Remove(desarrolladora);
+            await context.SaveChangesAsync();
+            return Ok("Has borrado la desarrolladora " + id);
+        }
+
+
+
+
     }
 }
 
