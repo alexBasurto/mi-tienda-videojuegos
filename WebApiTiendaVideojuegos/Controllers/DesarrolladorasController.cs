@@ -19,9 +19,21 @@ namespace WebApiTiendaVideojuegos.Controllers
         [HttpGet]
         public async Task<ActionResult> GetDesarroladoras()
         {
-            var hayDesarrolladoras = await context.Desarrolladoras.ToListAsync();
-            return Ok(hayDesarrolladoras);
-            // primer punto de acceso get todo
+            var Desarrolladoras = await context.Desarrolladoras.ToListAsync();
+            return Ok(Desarrolladoras);
+             //     TENGO QUE VER ESTE COMENTARIO
+             // He añadido otra línea 
+
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> MisDesarroladoras()
+        {
+            var Desarrolladoras = await context.Desarrolladoras.ToListAsync();
+            return Ok(Desarrolladoras);
+            //     TENGO QUE VER ESTE COMENTARIO
+            // He añadido otra línea 
+
         }
     }
 }
