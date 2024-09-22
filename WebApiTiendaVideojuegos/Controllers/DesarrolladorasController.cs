@@ -43,7 +43,7 @@ namespace WebApiTiendaVideojuegos.Controllers
             
             if (hayjuegos)
             {
-                return BadRequest("N se puede borrar "+" tiene juegos relacionados");
+                return BadRequest("No se puede borrar "+" tiene juegos relacionados");
             }
             var desarrolladora = await context.Desarrolladoras.FindAsync(id);
 
