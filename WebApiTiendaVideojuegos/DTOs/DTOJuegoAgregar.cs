@@ -1,9 +1,7 @@
 ﻿namespace WebApiTiendaVideojuegos.DTOs
 {
-    public class DTOJuegos
+    public class DTOJuegoAgregar
     {
-        public int IdJuego { get; set; }
-
         public string Nombre { get; set; } = null!;
 
         public decimal? Precio { get; set; }
