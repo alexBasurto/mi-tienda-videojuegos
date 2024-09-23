@@ -8,5 +8,15 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApiTiendaVideojuegos.Controllers.DesarrolladorasController",
+    "Method": "GetDesarroladoras",
+    "RelativePath": "api/Desarrolladoras",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
