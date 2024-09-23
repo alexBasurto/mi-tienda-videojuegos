@@ -4522,19 +4522,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alexb\\.nuget\\packages\\": {}
+    "C:\\Users\\Ibai Valente Lavado\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\www\\CURSO_DOTNET\\10 PROYECTO FINAL\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\WebApiTiendaVideojuegos.csproj",
+      "projectUniqueName": "C:\\dotnet bootcamp\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\WebApiTiendaVideojuegos.csproj",
       "projectName": "WebApiTiendaVideojuegos",
-      "projectPath": "C:\\www\\CURSO_DOTNET\\10 PROYECTO FINAL\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\WebApiTiendaVideojuegos.csproj",
-      "packagesPath": "C:\\Users\\alexb\\.nuget\\packages\\",
-      "outputPath": "C:\\www\\CURSO_DOTNET\\10 PROYECTO FINAL\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\obj\\",
+      "projectPath": "C:\\dotnet bootcamp\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\WebApiTiendaVideojuegos.csproj",
+      "packagesPath": "C:\\Users\\Ibai Valente Lavado\\.nuget\\packages\\",
+      "outputPath": "C:\\dotnet bootcamp\\mi-tienda-videojuegos\\WebApiTiendaVideojuegos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\alexb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ibai Valente Lavado\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
