@@ -257,7 +257,6 @@ C:\Users\Talio Tecnico\Desktop\mi-tienda-videojuegos\WebApiTiendaVideojuegos\obj
 C:\Users\Talio Tecnico\Desktop\mi-tienda-videojuegos\WebApiTiendaVideojuegos\obj\Debug\net8.0\WebApiTiendaVideojuegos.csproj.CoreCompileInputs.cache
 C:\Users\Talio Tecnico\Desktop\mi-tienda-videojuegos\WebApiTiendaVideojuegos\obj\Debug\net8.0\WebApiTiendaVideojuegos.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Talio Tecnico\Desktop\mi-tienda-videojuegos\WebApiTiendaVideojuegos\obj\Debug\net8.0\WebApiTiendaVideojuegos.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Talio Tecnico\Desktop\mi-tienda-videojuegos\WebApiTiendaVideojuegos\obj\Debug\net8.0\WebApiTiendaVideojuegos.sourcelink.json
 C:\Users\Talio Tecnico\Desktop\mi-tienda-videojuegos\WebApiTiendaVideojuegos\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Talio Tecnico\Desktop\mi-tienda-videojuegos\WebApiTiendaVideojuegos\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Talio Tecnico\Desktop\mi-tienda-videojuegos\WebApiTiendaVideojuegos\obj\Debug\net8.0\staticwebassets\msbuild.WebApiTiendaVideojuegos.Microsoft.AspNetCore.StaticWebAssets.props
