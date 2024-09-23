@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApiTiendaVideojuegos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+913df6b30b78c08e667107e38980238766617cd8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d63cc938fa4ed814ed5801b5886ce862aa65615a")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebApiTiendaVideojuegos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApiTiendaVideojuegos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
