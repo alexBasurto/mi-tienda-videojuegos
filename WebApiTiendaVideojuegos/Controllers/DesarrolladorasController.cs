@@ -74,7 +74,7 @@ namespace WebApiTiendaVideojuegos.Controllers
             return Ok("El nuevo nombre de id " + desarrolladora.IdDesarrolladora + " ahora es " + desarrolladora.Nombre);
         }
 
-        // >HACIENDO A PUT USANDO DTO MdoificacionNombreUsandoDTO
+        // >HACIENDO A PUT USANDO DTOMdodificacionNombreUsandoDTO
 
         [HttpPut("HacerMdoificacionNombreUsandoDTO")]
         public async Task<ActionResult> PutNombreDTO([FromBody] DTOModificacionDesarrolladora desarrolladora)
