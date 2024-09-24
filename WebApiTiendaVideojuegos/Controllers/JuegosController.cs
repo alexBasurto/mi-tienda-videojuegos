@@ -32,8 +32,11 @@ namespace WebApiTiendaVideojuegos.Controllers
                 Lanzamiento = x.Lanzamiento,
                 Pegi = x.Pegi,
                 IdCategoria = x.IdCategoria,
+                NombreCategoria = x.IdCategoriaNavigation.Genero,
                 IdDesarrolladora = x.IdDesarrolladora,
-                IdPlataforma = x.IdPlataforma
+                NombreDesarrolladora = x.IdDesarrolladoraNavigation.Nombre,
+                IdPlataforma = x.IdPlataforma,
+                NombrePlataforma = x.IdPlataformaNavigation.Nombre
             }).ToListAsync();
 
             return Ok(juegos);
