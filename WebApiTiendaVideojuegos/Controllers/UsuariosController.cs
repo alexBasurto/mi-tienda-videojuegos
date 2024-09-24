@@ -32,23 +32,23 @@ namespace WebApiTiendaVideojuegos.Controllers
 
         //HASH:
 
-        // Creamos un nuevo Usuario con un correo y contraseña:
-        [HttpPost("hash/nuevousuario")]
-        public async Task<ActionResult> PostNuevoUsuario([FromBody] DTOUsuario usuario)
-        {
-            var resultadoHash = hashService.Hash(usuario.Password);
-            var newUsuario = new Usuarios
-            {
-                Email = usuario.Email,
-                Password = resultadoHash.Hash,
-                Salt = resultadoHash.Salt
-            };
+        //// Creamos un nuevo Usuario con un correo y contraseña:
+        //[HttpPost("hash/nuevousuario")]
+        //public async Task<ActionResult> PostNuevoUsuario([FromBody] DTOUsuario usuario)
+        //{
+        //    var resultadoHash = hashService.Hash(usuario.Password);
+        //    var newUsuario = new Usuarios
+        //    {
+        //        Email = usuario.Email,
+        //        Password = resultadoHash.Hash,
+        //        Salt = resultadoHash.Salt
+        //    };
 
-            await context.Usuarios.AddAsync(newUsuario);
-            await context.SaveChangesAsync();
+        //    await context.Usuarios.AddAsync(newUsuario);
+        //    await context.SaveChangesAsync();
 
-            return Ok(newUsuario);
-        }
+        //    return Ok(newUsuario);
+        //}
 
         // Iniciamos sesión con un Usuario existente:
         [HttpPost("hash/checkusuario")]
@@ -86,7 +86,7 @@ namespace WebApiTiendaVideojuegos.Controllers
             await context.Usuarios.AddAsync(newUsuario);
             await context.SaveChangesAsync();
 
-            return Ok(newUsuario + "Cuenta registrada exitosamente");
+            return Ok("Cuenta registrada exitosamente");
         }
 
         // Iniciar sesión con una cuenta existente
