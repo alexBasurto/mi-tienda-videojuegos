@@ -51,6 +51,7 @@ namespace WebApiTiendaVideojuegos.Controllers
         //}
 
         // Iniciamos sesión con un Usuario existente:
+        [Authorize]
         [HttpPost("hash/checkusuario")]
         public async Task<ActionResult> CheckUsuarioHash([FromBody] DTOUsuario usuario)
         {
