@@ -24,8 +24,8 @@ namespace WebApiTiendaVideojuegos.Controllers
         [HttpGet(("ObtenerDesarrolladoras"))]
         public async Task<ActionResult> GetCategorias()
         {
-            var Categorias = await context.Desarrolladoras.ToArrayAsync();
-            return Ok(Categorias);
+            var desarrolladoras = await context.Desarrolladoras.ToArrayAsync();
+            return Ok(desarrolladoras);
 
         }
 
@@ -58,6 +58,7 @@ namespace WebApiTiendaVideojuegos.Controllers
         // UPDATE 
 
         // Aqui no uso un DTO
+
         [HttpPut("HacerMdoificacionNombre")]
         public async Task<ActionResult> PutNombre([FromBody] Desarrolladoras desarrolladora)
         {
@@ -96,10 +97,11 @@ namespace WebApiTiendaVideojuegos.Controllers
             desarrolladoraUpdate.Nombre = desarrolladora.Nombre;
             desarrolladoraUpdate.Indie = desarrolladora.Indie;
             desarrolladoraUpdate.Pais=desarrolladora.Pais;
-                        await context.SaveChangesAsync();
+
+            await context.SaveChangesAsync();
 
             //return NoContent();
-            return Ok("El nuevo nombre de id " + desarrolladora.IdDesarrolladora + " ahora es " + desarrolladora.Nombre);
+            return Ok(desarrolladora);
         }
 
         // CREATE Crear una nueva Desarrolladora
@@ -129,8 +131,8 @@ namespace WebApiTiendaVideojuegos.Controllers
             await context.SaveChangesAsync();
 
             //return Created();
-
-            return Ok("Se ha creado la nueva desarrolladora " + desarrolladora.Nombre);
+            return Ok(newDesarrolladora );
+            //return Ok("Se ha creado la nueva desarrolladora " + desarrolladora.Nombre);
         }
 
         // DELETE 
@@ -158,7 +160,8 @@ namespace WebApiTiendaVideojuegos.Controllers
 
             context.Remove(desarrolladora);
             await context.SaveChangesAsync();
-            return Ok("Has borrado la desarrolladora " + id);
+            return Ok(desarrolladora);
+            //return Ok("Has borrado la desarrolladora " + id);
         }
     }
 }
