@@ -31,29 +31,29 @@ namespace WebApiTiendaVideojuegos.Controllers
 
         /// 
 
-        [HttpGet("DesarrolladorasConJuegosUsandoDTO")]
-        public async Task<ActionResult> MisDesarroladoras()
-        {
+        //[HttpGet("DesarrolladorasConJuegosUsandoDTO")]
+        //public async Task<ActionResult> MisDesarroladoras()
+        //{
 
-            var desarrolladorasjuegos = await (from x in context.Desarrolladoras
-                                               select new DTODesarrolladoraConJUegos
-                                               {
-                                                   IdDesarrolladora = x.IdDesarrolladora,
-                                                   Nombre = x.Nombre,
-                                                   Indie = x.Indie,
-                                                   Pais = x.Pais,
+        //    var desarrolladorasjuegos = await (from x in context.Desarrolladoras
+        //                                       select new DTOAltaDesarrolladora
+        //                                       {
+        //                                           IdDesarrolladora = x.IdDesarrolladora,
+        //                                           Nombre = x.Nombre,
+        //                                           Indie = x.Indie,
+        //                                           Pais = x.Pais,
 
-                                                   // DTOJuegoItem para mostrar id y nombre 
-                                                   Juegos = x.Juegos.Select(y => new DTOJuegoItem
-                                                   {
-                                                       IdJuego = y.IdJuego,
-                                                       Nombre = y.Nombre,
-                                                   }).ToList(),
+        //                                           // DTOJuegoItem para mostrar id y nombre 
+        //                                           Juegos = x.Juegos.Select(y => new DTOJuegoItem
+        //                                           {
+        //                                               IdJuego = y.IdJuego,
+        //                                               Nombre = y.Nombre,
+        //                                           }).ToList(),
 
-                                               }).ToListAsync();
+        //                                       }).ToListAsync();
 
-            return Ok(desarrolladorasjuegos);
-        }
+        //    return Ok(desarrolladorasjuegos);
+        //}
 
         // UPDATE 
 
@@ -76,7 +76,7 @@ namespace WebApiTiendaVideojuegos.Controllers
             return Ok("El nuevo nombre de id " + desarrolladora.IdDesarrolladora + " ahora es " + desarrolladora.Nombre);
         }
 
-        // >HACIENDO A PUT USANDO DTOMdodificacionNombreUsandoDTO
+        // HACIENDO A PUT USANDO DTOMdodificacionNombreUsandoDTO
 
         [HttpPut("HacerMdoificacionNombreUsandoDTO")]
         public async Task<ActionResult> PutNombreDTO([FromBody] DTOModificacionDesarrolladora desarrolladora)
@@ -96,7 +96,6 @@ namespace WebApiTiendaVideojuegos.Controllers
             desarrolladoraUpdate.Nombre = desarrolladora.Nombre;
             desarrolladoraUpdate.Indie = desarrolladora.Indie;
             desarrolladoraUpdate.Pais=desarrolladora.Pais;
-
                         await context.SaveChangesAsync();
 
             //return NoContent();
