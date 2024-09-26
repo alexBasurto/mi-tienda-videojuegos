@@ -95,7 +95,9 @@ namespace WebApiTiendaVideojuegos.Controllers
 
             desarrolladoraUpdate.Nombre = desarrolladora.Nombre;
             desarrolladoraUpdate.Indie = desarrolladora.Indie;
-            await context.SaveChangesAsync();
+            desarrolladoraUpdate.Pais=desarrolladora.Pais;
+
+                        await context.SaveChangesAsync();
 
             //return NoContent();
             return Ok("El nuevo nombre de id " + desarrolladora.IdDesarrolladora + " ahora es " + desarrolladora.Nombre);
@@ -116,7 +118,6 @@ namespace WebApiTiendaVideojuegos.Controllers
             {
                 return BadRequest("ERROR " + desarrolladora.Nombre + " YA EXISTE");
             }
-
 
             var newDesarrolladora = new Desarrolladoras()
             {

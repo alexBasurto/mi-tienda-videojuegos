@@ -8,6 +8,8 @@
 
         public bool Indie { get; set; }
 
+        public string Pais {  get; set; }
+
 
 
     }
