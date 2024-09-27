@@ -19,7 +19,8 @@ builder.Services.AddDbContext<MiTiendaVideojuegosContext>(options =>
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
-// CORS
+// CORS PARA PERMITIR O NO ACCESOS DESDE DIFERENTES SITIOS 
+// AQUI DE MOMENTO ESTA PUESTO AllowAnt Origin ( puede accederse desde cualquier sitio )
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>

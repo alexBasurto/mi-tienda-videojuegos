@@ -29,8 +29,6 @@ namespace WebApiTiendaVideojuegos.Controllers
 
         }
 
-        /// 
-
         //[HttpGet("DesarrolladorasConJuegosUsandoDTO")]
         //public async Task<ActionResult> MisDesarroladoras()
         //{
@@ -106,7 +104,7 @@ namespace WebApiTiendaVideojuegos.Controllers
 
         // CREATE Crear una nueva Desarrolladora
 
-        [HttpPost("nuevaDesarroladoraDTO")]
+        [HttpPost("nuevaDesarrolladoraDTO")] 
 
         public async Task<ActionResult> PostEditorialDTO(DTOAltaDesarrolladora desarrolladora)
         {
@@ -118,6 +116,7 @@ namespace WebApiTiendaVideojuegos.Controllers
             if (existeDesarrolladora != null)
             {
                 return BadRequest("ERROR " + desarrolladora.Nombre + " YA EXISTE");
+                return BadRequest();
             }
 
             var newDesarrolladora = new Desarrolladoras()
