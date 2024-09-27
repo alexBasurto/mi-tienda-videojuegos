@@ -46,7 +46,7 @@ namespace WebApiTiendaVideojuegos.Controllers
 
         // Crear un juego
         [HttpPost]
-        public async Task<ActionResult> PostJuego (DTOJuegoAgregar juego)
+        public async Task<ActionResult> PostJuego ([FromForm] DTOJuegoAgregar juego)
         {
             var nuevoJuego = new Juegos()
             {
@@ -56,7 +56,7 @@ namespace WebApiTiendaVideojuegos.Controllers
                 Lanzamiento = juego.Lanzamiento,
                 Pegi = juego.Pegi,
                 IdCategoria = juego.IdCategoria,
-                IdDesarrolladora = juego.IdCategoria,
+                IdDesarrolladora = juego.IdDesarrolladora,
                 IdPlataforma = juego.IdPlataforma
             };
 

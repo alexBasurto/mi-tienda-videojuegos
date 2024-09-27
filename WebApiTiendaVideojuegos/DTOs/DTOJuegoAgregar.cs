@@ -2,7 +2,7 @@
 {
     public class DTOJuegoAgregar
     {
-        public string Nombre { get; set; } = null!;
+        public string Nombre { get; set; }
 
         public decimal? Precio { get; set; }
 
