@@ -53,9 +53,9 @@ namespace WebApiTiendaVideojuegos.Controllers
                 return NotFound();
             }
             cambioPlataforma.Nombre = plataforma.Nombre;
+            context.Update(cambioPlataforma);
             await context.SaveChangesAsync();
             return Ok(cambioPlataforma);
-
         }
 
         [HttpDelete("{idPlataforma}")]
@@ -66,11 +66,15 @@ namespace WebApiTiendaVideojuegos.Controllers
             {
                 return NotFound();
             }
+            bool tieneJuegos = await context.Juegos.AnyAsync(j => j.IdPlataforma == idPlataforma);
+            if (tieneJuegos)
+            {
+                return BadRequest("Hay juegos asociados a esta plataforma.");
+            }
             context.Plataformas.Remove(eliminarPlataforma);
             await context.SaveChangesAsync();
             return Ok(eliminarPlataforma);
 
         }
-
     }
 }

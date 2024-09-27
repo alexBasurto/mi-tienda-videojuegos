@@ -1,0 +1,3 @@
+﻿Error de inicio de sesión del usuario 'P081\Talio tecnico'.
+An error occurred while saving the entity changes. See the inner exception for details.
+An error occurred while saving the entity changes. See the inner exception for details.
