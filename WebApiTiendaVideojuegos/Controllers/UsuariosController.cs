@@ -7,6 +7,8 @@ using WebApiTiendaVideojuegos.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using WebApiTiendaVideojuegos.Interfaces;
+using WebApiTiendaVideojuegos.Validators;
 
 namespace WebApiTiendaVideojuegos.Controllers
 {
@@ -17,38 +19,21 @@ namespace WebApiTiendaVideojuegos.Controllers
         private readonly MiTiendaVideojuegosContext context;
         private readonly HashService hashService;
         private readonly TokenService tokenService;
-        
+        private readonly IUsuarioValidator usuarioValidator;
+
+
         // private readonly IConfiguration configuration;
         // private readonly IDataProtector dataProtector;
         // private readonly ILogger<UsuariosController> logger;
 
         public UsuariosController(MiTiendaVideojuegosContext context, HashService hashService,
-            TokenService tokenService)
+            TokenService tokenService, IUsuarioValidator usuarioValidator)
         {
             this.context = context;
             this.hashService = hashService;
             this.tokenService = tokenService;
+            this.usuarioValidator = usuarioValidator;
         }
-
-        //HASH:
-
-        //// Creamos un nuevo Usuario con un correo y contraseña:
-        //[HttpPost("hash/nuevousuario")]
-        //public async Task<ActionResult> PostNuevoUsuario([FromBody] DTOUsuario usuario)
-        //{
-        //    var resultadoHash = hashService.Hash(usuario.Password);
-        //    var newUsuario = new Usuarios
-        //    {
-        //        Email = usuario.Email,
-        //        Password = resultadoHash.Hash,
-        //        Salt = resultadoHash.Salt
-        //    };
-
-        //    await context.Usuarios.AddAsync(newUsuario);
-        //    await context.SaveChangesAsync();
-
-        //    return Ok(newUsuario);
-        //}
 
         // Iniciamos sesión con un Usuario existente:
         [Authorize]
@@ -76,6 +61,11 @@ namespace WebApiTiendaVideojuegos.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] DTOUsuario usuario)
         {
+            if (!usuarioValidator.IsValid(usuario, out var errors))
+            {
+                return BadRequest(new { Errors = errors });
+            }
+
             var resultadoHash = hashService.Hash(usuario.Password);
             var newUsuario = new Usuarios
             {
@@ -94,10 +84,15 @@ namespace WebApiTiendaVideojuegos.Controllers
         [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] DTOUsuario usuario)
         {
+            if (!usuarioValidator.IsValid(usuario, out var errors))
+            {
+                return BadRequest(new { Errors = errors });
+            }
+
             var usuarioDB = await context.Usuarios.FirstOrDefaultAsync(x => x.Email == usuario.Email);
             if (usuarioDB == null)
             {
-                return Unauthorized("Por favor, introduzca un correo electrónico");
+                return Unauthorized("Su cuenta no existe o su contraseña es errónea");
             }
             var resultadoHash = hashService.Hash(usuario.Password, usuarioDB.Salt);
             if (usuarioDB.Password == resultadoHash.Hash)
@@ -107,7 +102,7 @@ namespace WebApiTiendaVideojuegos.Controllers
             }
             else
             {
-                return Unauthorized("Por favor, introduzca una contraseña");
+                return Unauthorized("Su cuenta no existe o su contraseña es errónea");
             }
         }
 

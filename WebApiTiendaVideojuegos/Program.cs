@@ -7,6 +7,8 @@ using WebApiTiendaVideojuegos.Filters;
 using WebApiTiendaVideojuegos.Models;
 using WebApiTiendaVideojuegos.Services;
 using System.Text;
+using WebApiTiendaVideojuegos.Interfaces;
+using WebApiTiendaVideojuegos.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +37,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<HashService>();
 builder.Services.AddTransient<TokenService>();
+builder.Services.AddScoped<IUsuarioValidator, UsuarioValidator>();
 
 // Add services to the container.
 builder.Services.AddControllers(options =>
