@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace WebApiTiendaVideojuegos.Filters
 {
@@ -24,6 +25,14 @@ namespace WebApiTiendaVideojuegos.Filters
             }
 
             base.OnException(context);
+
+            // Personaliza la respuesta en caso de excepción
+            context.Result = new ContentResult
+            {
+                StatusCode = 500,
+                Content = "Ha ocurrido un error inesperado."
+            };
+            context.ExceptionHandled = true; // Marca la excepción como manejada
         }
     }
 }
