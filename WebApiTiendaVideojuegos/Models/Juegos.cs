@@ -17,6 +17,8 @@ public partial class Juegos
 
     public int Pegi { get; set; }
 
+    public string? Caratula { get; set; }
+
     public int IdCategoria { get; set; }
 
     public int IdPlataforma { get; set; }

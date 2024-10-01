@@ -59,6 +59,7 @@ public partial class MiTiendaVideojuegosContext : DbContext
             entity.HasKey(e => e.IdJuego);
 
             entity.Property(e => e.IdJuego).HasColumnName("idJuego");
+            entity.Property(e => e.Caratula).HasColumnName("caratula");
             entity.Property(e => e.Disponible).HasColumnName("disponible");
             entity.Property(e => e.IdCategoria).HasColumnName("idCategoria");
             entity.Property(e => e.IdDesarrolladora).HasColumnName("idDesarrolladora");

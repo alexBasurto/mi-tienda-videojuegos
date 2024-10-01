@@ -66,6 +66,12 @@ namespace WebApiTiendaVideojuegos.Controllers
                 return BadRequest(new { Errors = errors });
             }
 
+            bool yaRegistrado = await context.Usuarios.AnyAsync(u => u.Email == usuario.Email);
+            if (yaRegistrado)
+            {
+                return BadRequest("Ya existe un usuario registrado con ese email.");
+            }
+
             var resultadoHash = hashService.Hash(usuario.Password);
             var newUsuario = new Usuarios
             {

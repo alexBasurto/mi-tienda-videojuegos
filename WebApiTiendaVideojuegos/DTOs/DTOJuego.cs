@@ -16,6 +16,8 @@ namespace WebApiTiendaVideojuegos.DTOs
 
         public int Pegi { get; set; }
 
+        public string? Caratula { get; set; }
+
         public int IdCategoria { get; set; }
         public string NombreCategoria { get; set; }
 

@@ -1,4 +1,6 @@
-﻿namespace WebApiTiendaVideojuegos.DTOs
+﻿using WebApiTiendaVideojuegos.Validators;
+
+namespace WebApiTiendaVideojuegos.DTOs
 {
     public class DTOJuegoAgregar
     {
@@ -11,6 +13,10 @@
         public DateTime Lanzamiento { get; set; }
 
         public int Pegi { get; set; }
+
+        [PesoArchivoValidacion(PesoMaximoEnMegaBytes: 4)]
+        [TipoArchivoValidacion(grupoTipoArchivo: GrupoTipoArchivo.Imagen)]
+        public IFormFile? Caratula { get; set; }
 
         public int IdCategoria { get; set; }
 
