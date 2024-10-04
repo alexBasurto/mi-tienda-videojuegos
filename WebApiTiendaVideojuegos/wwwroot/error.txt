@@ -6,3 +6,4 @@ Exception de prueba
 Exception de prueba
 Exception de prueba
 Exception de prueba
+An error occurred while saving the entity changes. See the inner exception for details.

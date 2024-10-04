@@ -164,7 +164,7 @@ namespace WebApiTiendaVideojuegos.Controllers
                         juegoModificar.Caratula = await gestorArchivos.GuardarArchivo(contenido, extension, "imagenes",
                             juego.Caratula.ContentType);
                     }
-                }
+                } 
                 else
                 {
                     if(juego.EliminarCaratula)
