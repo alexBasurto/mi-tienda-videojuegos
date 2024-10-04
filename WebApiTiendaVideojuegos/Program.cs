@@ -13,8 +13,24 @@ using WebApiTiendaVideojuegos.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Añadir contexto de bbdd MiTiendaVideojuegos
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// Aï¿½adir contexto de bbdd MiTiendaVideojuegos
+// var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+string connectionString;
+string claveJWT;
+
+// Obteniendo el valor de ASPNETCORE_ENVIRONMENT para verificar el entorno
+bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
+
+// Obteniendo las variables desde el entorno
+connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION_STRING");
+claveJWT = Environment.GetEnvironmentVariable("CLAVE_JWT");
+
+// Si alguna variable de entorno no se carga, puedes manejar el error de esta forma
+if (string.IsNullOrEmpty(connectionString) || string.IsNullOrEmpty(claveJWT))
+{
+    throw new InvalidOperationException("Variables de entorno necesarias no encontradas.");
+}
 
 builder.Services.AddDbContext<MiTiendaVideojuegosContext>(options =>
 {
@@ -22,14 +38,25 @@ builder.Services.AddDbContext<MiTiendaVideojuegosContext>(options =>
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
-// CORS PARA PERMITIR O NO ACCESOS DESDE DIFERENTES SITIOS 
-// AQUI DE MOMENTO ESTA PUESTO AllowAnt Origin ( puede accederse desde cualquier sitio )
+// Aplicar una CORS Policy al proyecto que acepte cualquier peticiï¿½n desde cualquier lugar.
+// Aï¿½adimos CORS
+
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddDefaultPolicy(policy =>
     {
-        // builder.WithOrigins("https://www.apirequest.io").AllowAnyMethod().AllowAnyHeader();
-        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        if (isDevelopment)
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        }
+        else
+        {
+            policy.WithOrigins("https://playzone.basurto.dev")
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        }
     });
 });
 
@@ -60,7 +87,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                    ValidateLifetime = true,
                    ValidateIssuerSigningKey = true,
                    IssuerSigningKey = new SymmetricSecurityKey(
-                     Encoding.UTF8.GetBytes(builder.Configuration["ClaveJWT"]))
+                     Encoding.UTF8.GetBytes(claveJWT))
                });
 
 // Configurar seguridad en Swagger
@@ -94,17 +121,21 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (isDevelopment)
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseStaticFiles();
 
 app.UseHttpsRedirection();
-app.UseCors();
-app.UseAuthorization();
-app.MapControllers();
 
-app.UseStaticFiles();
+app.UseCors();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();

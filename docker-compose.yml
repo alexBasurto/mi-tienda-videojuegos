@@ -1,0 +1,38 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver_playzone
+    user: root
+    environment:
+      SA_PASSWORD: ${SA_PASSWORD}
+      ACCEPT_EULA: Y
+      MSSQL_PID: Express
+    volumes:
+      - ./sql/data:/var/opt/mssql/data
+    env_file:
+      - .env
+    networks:
+      - network_playzone
+    ports:
+      - '1433:1433'
+    restart: always
+
+  backend:
+    build: .
+    container_name: aspnet_playzone
+    ports:
+      - '8080:8080'
+      - '8081:8081'
+    depends_on:
+      - db
+    networks:
+      - network_playzone
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SQL_CONNECTION_STRING=${SQL_CONNECTION_STRING}
+      - CLAVE_JWT=${CLAVE_JWT}
+    restart: always
+
+networks:
+   network_playzone:
+      name: network_playzone

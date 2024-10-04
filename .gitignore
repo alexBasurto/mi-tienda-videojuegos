@@ -1,3 +1,4 @@
 .vs
 /WebApiTiendaVideojuegos/obj
 /WebApiTiendaVideojuegos/bin
+.env
