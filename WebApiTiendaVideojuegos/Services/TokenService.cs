@@ -23,7 +23,7 @@ namespace WebApiTiendaVideojuegos.Services
                 new Claim("lo que yo quiera", "cualquier otro valor")
             };
 
-            var clave = configuration["ClaveJWT"];
+            var clave = Environment.GetEnvironmentVariable("CLAVE_JWT");
             var claveKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(clave));
             var signingCredentials = new SigningCredentials(claveKey, SecurityAlgorithms.HmacSha256);
 

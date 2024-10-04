@@ -53,31 +53,13 @@ builder.Services.AddCors(options =>
         }
         else
         {
+            
             policy.WithOrigins("https://playzone.basurto.dev")
                   .AllowAnyMethod()
                   .AllowAnyHeader();
         }
     });
 });
-
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddTransient<HashService>();
-builder.Services.AddTransient<TokenService>();
-builder.Services.AddScoped<IUsuarioValidator, UsuarioValidator>();
-builder.Services.AddScoped<IGestorArchivos, GestorArchivos>();
-
-// Add services to the container.
-builder.Services.AddControllers(options =>
-{
-    options.Filters.Add(typeof(FiltroDeExcepcion));
-}).AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
@@ -118,6 +100,23 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+// Add services to the container.
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(typeof(FiltroDeExcepcion));
+}).AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+
+builder.Services.AddEndpointsApiExplorer();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddTransient<HashService>();
+builder.Services.AddTransient<TokenService>();
+builder.Services.AddScoped<IUsuarioValidator, UsuarioValidator>();
+builder.Services.AddScoped<IGestorArchivos, GestorArchivos>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -128,7 +127,7 @@ if (isDevelopment)
 }
 app.UseStaticFiles();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseCors();
 
